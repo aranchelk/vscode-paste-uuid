@@ -3,7 +3,11 @@
   "displayName": "PasteUUID",
   "description": "Insert a generated UUID into the editor via context menu or command.",
   "version": "0.0.1",
-  "publisher": "your-name-or-org",
+  "publisher": "T-Do, Inc.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aranchelk/vscode-paste-uuid.git"
+  },
   "engines": {
     "vscode": "^1.99.2"
   },
