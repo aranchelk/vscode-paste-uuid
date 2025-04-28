@@ -1,0 +1,78 @@
+{
+  "name": "pasteuuid",
+  "displayName": "PasteUUID",
+  "description": "Insert a generated UUID into the editor via context menu or command.",
+  "version": "0.0.1",
+  "publisher": "your-name-or-org",
+  "engines": {
+    "vscode": "^1.99.2"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:pasteUUID.generate"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "pasteUUID.generate",
+        "title": "Paste UUID",
+        "category": "PasteUUID"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "pasteUUID.generate",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "PasteUUID Extension Settings",
+      "properties": {
+        "pasteuuid.uuidVersion": {
+          "type": "string",
+          "enum": [
+            "v1",
+            "v4",
+            "v5"
+          ],
+          "default": "v4",
+          "description": "UUID version to generate (v1 = Time-Based, v4 = Random, v5 = Name-Based)."
+        },
+        "pasteuuid.letterCase": {
+          "type": "string",
+          "enum": [
+            "lowercase",
+            "uppercase"
+          ],
+          "default": "lowercase",
+          "description": "Letter case for the generated UUID (hexadecimal characters)."
+        },
+        "pasteuuid.includeHyphens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to include hyphen (-) characters in the UUID."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/uuid": "^10.0.0",
+    "@types/vscode": "^1.99.1",
+    "typescript": "^5.8.3",
+    "vscode": "^1.1.37"
+  },
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
+}
